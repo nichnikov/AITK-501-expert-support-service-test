@@ -6,14 +6,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-queries_df = pd.read_csv(os.path.join("data", "bss_queries_day.csv"), sep="\t")
+queries_df = pd.read_csv(os.path.join("data", "queries_with_short_queries_clearing.csv"), sep="\t")
 
+# "Query	ShortQuery"
 
-url_srv = os.getenv("SERVICE_URL")
+url_srv = os.getenv("SERVICE_URL_SRV")
 url_kuber = os.getenv("SERVICE_URL_KUBER")
-
+url_balance = os.getenv("SERVICE_URL_BALANCE")
 test_results = []
-for i, d in enumerate(queries_df.to_dict(orient="records")[:100]):
+for i, d in enumerate(queries_df.to_dict(orient="records")[:1000]):
     query ={
         "pubid": 9,
         "chat_id": 0,
@@ -34,4 +35,4 @@ for i, d in enumerate(queries_df.to_dict(orient="records")[:100]):
 timeouts_df = pd.DataFrame(test_results)
 print(timeouts_df)
 
-timeouts_df.to_csv(os.path.join("data", "test_results.csv"), sep="\t", index=False)
+timeouts_df.to_csv(os.path.join("results", "vacation_queries_answers.csv"), sep="\t", index=False)
