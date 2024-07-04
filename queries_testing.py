@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-queries_df = pd.read_csv(os.path.join("data", "queries_with_short_queries_clearing.csv"), sep="\t")
+queries_df = pd.read_csv(os.path.join("data", "AITK552_bss_supp_queries.csv"), sep="\t")
 
 # "Query	ShortQuery"
 
@@ -35,4 +35,4 @@ for i, d in enumerate(queries_df.to_dict(orient="records")[:1000]):
 timeouts_df = pd.DataFrame(test_results)
 print(timeouts_df)
 
-timeouts_df.to_csv(os.path.join("results", "vacation_queries_answers.csv"), sep="\t", index=False)
+timeouts_df.to_csv(os.path.join("results", "AITK552_queries_answers1000.csv"), sep="\t", index=False)
